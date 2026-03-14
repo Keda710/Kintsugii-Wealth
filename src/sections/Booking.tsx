@@ -1,22 +1,86 @@
-import { useState } from 'react';
-import { Clock, ShieldCheck } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { Clock, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const TIMES = ['09:00 AM', '11:00 AM', '01:00 PM', '03:00 PM', '05:00 PM', '06:00 PM'];
-const WEEKEND_DAYS = [0, 6, 7, 13, 14, 20, 21, 27, 28]; // Simplified weekend logic for March 2024
+const WEEKDAY_LABELS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+const MONTH_NAMES = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+function getDaysInMonth(year: number, month: number) {
+  return new Date(year, month + 1, 0).getDate();
+}
+
+function getFirstDayOfWeek(year: number, month: number) {
+  return new Date(year, month, 1).getDay();
+}
+
+function isSameDay(a: Date, b: Date) {
+  return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+}
+
+function formatDateForEmail(d: Date) {
+  return `${MONTH_NAMES[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+}
 
 export function Booking() {
-  const [selectedDate, setSelectedDate] = useState<number | null>(null);
+  const now = new Date();
+  const [viewedMonth, setViewedMonth] = useState(now.getMonth());
+  const [viewedYear, setViewedYear] = useState(now.getFullYear());
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [name, setName] = useState('');
+
+  const startOfTomorrow = useMemo(() => {
+    const t = new Date();
+    t.setDate(t.getDate() + 1);
+    t.setHours(0, 0, 0, 0);
+    return t;
+  }, []);
+
+  const daysInMonth = getDaysInMonth(viewedYear, viewedMonth);
+  const firstDay = getFirstDayOfWeek(viewedYear, viewedMonth);
+  const leadingBlanks = firstDay;
+  const totalCells = leadingBlanks + daysInMonth;
+
+  const goPrevMonth = () => {
+    if (viewedMonth === 0) {
+      setViewedMonth(11);
+      setViewedYear((y) => y - 1);
+    } else {
+      setViewedMonth((m) => m - 1);
+    }
+  };
+
+  const goNextMonth = () => {
+    if (viewedMonth === 11) {
+      setViewedMonth(0);
+      setViewedYear((y) => y + 1);
+    } else {
+      setViewedMonth((m) => m + 1);
+    }
+  };
+
+  const handleSelectDay = (day: number) => {
+    const date = new Date(viewedYear, viewedMonth, day);
+    if (date < startOfTomorrow) return;
+    setSelectedDate(date);
+  };
 
   const handleBooking = () => {
     if (!selectedDate || !selectedTime || !name) {
       alert('Please complete all fields to proceed.');
       return;
     }
-    const mailto = `mailto:Kintsugiiwealth@gmail.com?subject=Meeting Request: ${name}&body=I would like to schedule a discovery call on March ${selectedDate}, 2024 at ${selectedTime}.`;
+    const dateStr = formatDateForEmail(selectedDate);
+    const mailto = `mailto:Kintsugiiwealth@gmail.com?subject=Meeting Request: ${name}&body=I would like to schedule a discovery call on ${dateStr} at ${selectedTime}.`;
     window.location.href = mailto;
   };
+
+  const calendarCells: (number | null)[] = [];
+  for (let i = 0; i < leadingBlanks; i++) calendarCells.push(null);
+  for (let d = 1; d <= daysInMonth; d++) calendarCells.push(d);
 
   return (
     <section id="booking" className="section-padding bg-white">
@@ -53,25 +117,54 @@ export function Booking() {
 
           <div className="bg-white border border-slate-200 p-8 md:p-12 shadow-2xl">
             <div className="mb-10">
-              <h3 className="text-xs uppercase tracking-[0.3em] font-bold text-gold mb-6">1. Select Date (March 2024)</h3>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-xs uppercase tracking-[0.3em] font-bold text-gold">1. Select Date</h3>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={goPrevMonth}
+                    className="p-2 text-navy/70 hover:text-gold hover:bg-gold/10 rounded transition-colors"
+                    aria-label="Previous month"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <span className="text-sm font-bold text-navy min-w-[120px] text-center">
+                    {MONTH_NAMES[viewedMonth]} {viewedYear}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={goNextMonth}
+                    className="p-2 text-navy/70 hover:text-gold hover:bg-gold/10 rounded transition-colors"
+                    aria-label="Next month"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
               <div className="grid grid-cols-7 gap-2 text-center">
-                {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d) => (
+                {WEEKDAY_LABELS.map((d) => (
                   <div key={d} className="text-[10px] font-bold text-slate-400 py-2">
                     {d}
                   </div>
                 ))}
-                {[...Array(31)].map((_, i) => {
-                  const day = i + 1;
-                  const isWeekend = WEEKEND_DAYS.includes(i);
+                {calendarCells.map((day, i) => {
+                  if (day === null) {
+                    return <div key={`empty-${i}`} className="aspect-square" />;
+                  }
+                  const date = new Date(viewedYear, viewedMonth, day);
+                  const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+                  const isDisabled = date < startOfTomorrow || isWeekend;
+                  const isSelected = selectedDate !== null && isSameDay(date, selectedDate);
                   return (
                     <button
-                      key={i}
-                      disabled={isWeekend}
-                      onClick={() => setSelectedDate(day)}
+                      key={`${viewedYear}-${viewedMonth}-${day}`}
+                      type="button"
+                      disabled={isDisabled}
+                      onClick={() => handleSelectDay(day)}
                       className={`
                         aspect-square flex items-center justify-center text-xs font-medium transition-all duration-300
-                        ${isWeekend ? 'text-slate-200 cursor-not-allowed' : 'hover:bg-gold/10 text-navy'}
-                        ${selectedDate === day ? 'bg-navy text-white hover:bg-navy' : ''}
+                        ${isDisabled ? 'text-slate-200 cursor-not-allowed' : 'hover:bg-gold/10 text-navy'}
+                        ${isSelected ? 'bg-navy text-white hover:bg-navy' : ''}
                       `}
                     >
                       {day}
@@ -87,6 +180,7 @@ export function Booking() {
                 {TIMES.map((t) => (
                   <button
                     key={t}
+                    type="button"
                     onClick={() => setSelectedTime(t)}
                     className={`
                       py-3 text-[10px] font-bold uppercase tracking-widest border transition-all duration-300
@@ -108,6 +202,7 @@ export function Booking() {
                 className="w-full px-6 py-4 bg-slate-50 border-none text-[10px] font-bold tracking-widest uppercase focus:ring-1 focus:ring-gold outline-none"
               />
               <button
+                type="button"
                 onClick={handleBooking}
                 className="w-full py-5 bg-navy text-white text-xs font-bold uppercase tracking-[0.3em] hover:bg-gold transition-all duration-500 shadow-lg shadow-navy/10"
               >
