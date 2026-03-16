@@ -56,7 +56,7 @@ export function Hero() {
         >
           <div className="relative z-10 w-full max-w-[320px] aspect-[4/5] overflow-hidden border-[10px] border-white shadow-2xl">
             <img
-              src="/photo.png"
+              src="/Founder_photo.png"
               alt="Priyank Vora"
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
