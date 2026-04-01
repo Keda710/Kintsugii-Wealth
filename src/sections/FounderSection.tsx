@@ -46,13 +46,13 @@ export function FounderSection() {
               <div className="text-[10px] uppercase tracking-widest font-bold text-navy">Years Experience</div>
             </div>
             <div className="bg-white p-8 border border-slate-100 shadow-sm">
-              <div className="text-gold font-serif text-3xl mb-2">45+</div>
+              <div className="text-gold font-serif text-3xl mb-2">100+</div>
               <div className="text-[10px] uppercase tracking-widest font-bold text-navy">HNI Clients</div>
             </div>
           </div>
           <div className="pt-12">
             <div className="bg-navy p-8 text-white shadow-xl">
-              <div className="text-gold font-serif text-3xl mb-2">34 Cr</div>
+              <div className="text-gold font-serif text-3xl mb-2">100+ Cr</div>
               <div className="text-[10px] uppercase tracking-widest font-bold text-white/60">AUM Managed</div>
             </div>
           </div>
