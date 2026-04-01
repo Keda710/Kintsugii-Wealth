@@ -11,6 +11,11 @@ export function Insights() {
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute top-[10%] -left-20 w-64 h-64 border-[4px] border-gold/40 rotate-45 pointer-events-none opacity-80" 
       />
+      <motion.div 
+        animate={{ y: [0, 40, 0], scale: [1, 1.2, 1] }}
+        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-[5%] -right-10 w-32 h-32 bg-gold/20 rounded-full blur-xl pointer-events-none" 
+      />
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="heading-md text-navy mb-4">Client Insights</h2>

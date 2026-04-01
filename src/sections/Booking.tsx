@@ -91,6 +91,11 @@ export function Booking() {
         transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
         className="absolute top-[-10%] -left-20 w-80 h-80 border-[8px] border-gold/40 rounded-full pointer-events-none opacity-80" 
       />
+      <motion.div 
+        animate={{ x: [0, -30, 0], y: [0, -20, 0] }}
+        transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-[5%] -right-16 w-56 h-56 bg-gold/20 rounded-full blur-2xl pointer-events-none opacity-70" 
+      />
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 items-start">
           <div>

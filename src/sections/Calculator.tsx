@@ -77,6 +77,11 @@ export function Calculator() {
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute bottom-10 -left-16 w-48 h-48 border-[6px] border-gold/40 rounded-xl pointer-events-none opacity-80" 
       />
+      <motion.div 
+        animate={{ y: [0, 20, 0], rotate: [0, 90, 0] }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+        className="absolute top-10 -right-20 w-64 h-64 border-[1px] border-gold/30 rounded-full pointer-events-none" 
+      />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">

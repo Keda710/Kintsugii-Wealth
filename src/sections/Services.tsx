@@ -57,6 +57,11 @@ export function Services() {
         transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
         className="absolute bottom-[-10%] -right-10 w-96 h-96 border-[8px] border-gold/40 rounded-full pointer-events-none opacity-80" 
       />
+      <motion.div 
+        animate={{ x: [0, 30, 0], scale: [1, 1.1, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-[20%] -left-20 w-72 h-72 bg-gold/20 rounded-full blur-3xl pointer-events-none opacity-60" 
+      />
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-xl">

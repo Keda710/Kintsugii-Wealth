@@ -9,6 +9,11 @@ export function FounderSection() {
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute top-10 -right-20 w-80 h-80 bg-gold/30 rounded-full blur-3xl pointer-events-none" 
       />
+      <motion.div 
+        animate={{ rotate: [0, -90, 0] }}
+        transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+        className="absolute bottom-[-10%] -left-20 w-96 h-96 border-[1px] border-gold/20 pointer-events-none" 
+      />
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center relative z-10">
         <motion.div
           initial={{ opacity: 0, x: -30 }}

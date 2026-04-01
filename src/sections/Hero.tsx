@@ -4,8 +4,22 @@ import { SocialLinks } from '../components/SocialLinks';
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-paper">
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-navy/5 -skew-x-12 transform translate-x-20" />
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white via-paper to-gold/10">
+      {/* Soft overlay lines & floating blobs echoing Sahjik's airy design */}
+      <div className="absolute top-0 right-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMCA1MCBDIDIwMCAyMDAgODAwIDEwMCAxMDAwIDI1MCIgc3Ryb2tlPSJyZ2JhKDE5NywgMTYwLCA4OSwgMC4wNSkiIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMiIvPjwvc3ZnPg==')] opacity-50 bg-no-repeat bg-cover pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-navy/5 -skew-x-12 transform translate-x-20 pointer-events-none" />
+      
+      {/* Extra Floating Particles */}
+      <motion.div 
+        animate={{ y: [0, -40, 0], x: [0, 20, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-[30%] left-[10%] w-4 h-4 bg-gold rounded-full opacity-40 blur-[2px] pointer-events-none" 
+      />
+      <motion.div 
+        animate={{ y: [0, 30, 0], x: [0, -30, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-[20%] right-[45%] w-8 h-8 border-[2px] border-gold rounded-full opacity-30 pointer-events-none" 
+      />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-16 items-center relative z-10">
         <motion.div
