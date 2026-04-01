@@ -4,7 +4,9 @@ import {
   TrustBar,
   FounderSection,
   Solutions,
+  Services,
   Insights,
+  Calculator,
   Booking,
   Footer,
 } from './sections';
@@ -17,7 +19,9 @@ export default function App() {
       <TrustBar />
       <FounderSection />
       <Solutions />
+      <Services />
       <Insights />
+      <Calculator />
       <Booking />
       <Footer />
     </div>

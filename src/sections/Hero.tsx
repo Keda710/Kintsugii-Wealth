@@ -10,13 +10,12 @@ export function Hero() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-16 items-center relative z-10">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
           <motion.div
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             className="flex items-center gap-3 mb-6"
           >
@@ -49,8 +48,7 @@ export function Hero() {
 
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
           className="relative flex justify-center lg:justify-end"
         >
@@ -61,13 +59,32 @@ export function Hero() {
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
           </div>
-          <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gold/10 -z-10" />
-          <div className="absolute -top-6 -right-6 w-32 h-32 border border-gold/20 -z-10" />
-
-          <div className="absolute bottom-8 -right-8 bg-white p-6 shadow-xl hidden md:block border border-slate-100">
-            <div className="text-navy font-serif text-3xl font-bold">15+</div>
-            <div className="text-[9px] uppercase tracking-widest font-bold text-gold mt-1">Years of Excellence</div>
-          </div>
+          <motion.div 
+            animate={{ 
+              y: [0, -20, 0],
+              rotate: [0, 15, 0]
+            }}
+            transition={{ 
+              duration: 6, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+            className="absolute -bottom-8 -left-8 w-40 h-40 bg-gold opacity-20 -z-10 rounded-full blur-xl" 
+          />
+          <motion.div 
+            animate={{ 
+              y: [0, 20, 0],
+              x: [0, -10, 0],
+              rotate: [0, -10, 0]
+            }}
+            transition={{ 
+              duration: 8, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              delay: 1 
+            }}
+            className="absolute -top-6 -right-6 w-32 h-32 border-[3px] border-gold/40 -z-10" 
+          />
         </motion.div>
       </div>
     </section>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'motion/react';
 import {
   TrendingUp,
@@ -26,8 +27,14 @@ function ServiceIcon({ iconKey }: { iconKey: string }) {
 
 export function Solutions() {
   return (
-    <section id="solutions" className="section-padding bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section id="solutions" className="section-padding bg-white relative overflow-hidden">
+      {/* Decorative Corner Element */}
+      <motion.div 
+        animate={{ y: [0, 20, 0], x: [0, 10, 0], rotate: [0, 15, -15, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-[-5%] -left-10 w-64 h-64 bg-gold/40 rounded-full blur-2xl pointer-events-none opacity-80" 
+      />
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-xl">
             <h2 className="heading-md text-navy mb-4">Bespoke Solutions</h2>

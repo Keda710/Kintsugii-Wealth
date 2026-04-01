@@ -1,9 +1,16 @@
 import { MapPin, Mail, Phone } from 'lucide-react';
+import { motion } from 'motion/react';
 import { SocialLinks } from '../components/SocialLinks';
 
 export function Footer() {
   return (
-    <footer className="bg-navy text-white pt-24 pb-12">
+    <motion.footer 
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="bg-navy text-white pt-24 pb-12"
+    >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-3 gap-16 mb-24">
           <div>
@@ -14,7 +21,16 @@ export function Footer() {
               Founded by Priyank Vora. Dedicated to mending and strengthening financial legacies through
               institutional-grade advisory and bespoke wealth architecture.
             </p>
-            <div className="flex gap-6 mt-10">
+            <div className="mt-8 mb-8">
+              <div className="flex items-center gap-3 text-sm border-l-2 border-gold pl-3 py-1">
+                <span className="text-white font-medium">AMFI Registered</span>
+                <span className="text-white/40">|</span>
+                <span className="text-gold tracking-wider font-bold text-xs">ARN: 270042</span>
+              </div>
+              <p className="text-white/40 text-xs mt-2 pl-3">Mutual Fund Distributor</p>
+            </div>
+
+            <div className="flex gap-6 mt-8">
               <SocialLinks linkClassName="p-2 text-white/40 hover:text-gold transition-colors" />
             </div>
           </div>
@@ -50,6 +66,13 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Disclaimer */}
+        <div className="border-t border-white/10 pt-8 pb-8 text-center md:text-left">
+          <p className="text-white/40 text-[11px] leading-relaxed max-w-5xl">
+            <strong className="text-white/60">Disclaimer:</strong> Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing. Past performance is not indicative of future returns. Pragmatik Investing is not responsible for any losses incurred by the investor for relying on the information provided on this website. The information provided is for educational and informational purposes only and should not be considered as investment advice.
+          </p>
+        </div>
+
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[10px] uppercase tracking-widest text-white/30">
             &copy; 2025 Kintsugii Wealth. Private & Confidential.
@@ -64,6 +87,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

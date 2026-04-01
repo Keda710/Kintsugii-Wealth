@@ -2,8 +2,14 @@ import { motion } from 'motion/react';
 
 export function FounderSection() {
   return (
-    <section id="founder" className="section-padding bg-paper">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+    <section id="founder" className="section-padding bg-paper relative overflow-hidden">
+      {/* Decorative Corner Element */}
+      <motion.div 
+        animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-10 -right-20 w-80 h-80 bg-gold/30 rounded-full blur-3xl pointer-events-none" 
+      />
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center relative z-10">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -50,8 +56,8 @@ export function FounderSection() {
               <div className="text-[10px] uppercase tracking-widest font-bold text-navy">HNI Clients</div>
             </div>
           </div>
-          <div className="pt-12">
-            <div className="bg-navy p-8 text-white shadow-xl">
+          <div className="flex items-center h-full">
+            <div className="bg-navy p-6 md:p-8 text-white shadow-xl w-full max-w-[200px] mx-auto">
               <div className="text-gold font-serif text-3xl mb-2">100+ Cr</div>
               <div className="text-[10px] uppercase tracking-widest font-bold text-white/60">AUM Managed</div>
             </div>

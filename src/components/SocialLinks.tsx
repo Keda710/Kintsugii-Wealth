@@ -1,3 +1,4 @@
+import React from 'react';
 import { Linkedin, Instagram, Youtube } from 'lucide-react';
 import { SOCIAL_LINKS } from '../data/socialLinks';
 import type { SocialLink } from '../types';

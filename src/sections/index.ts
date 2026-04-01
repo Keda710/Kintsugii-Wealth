@@ -6,3 +6,5 @@ export { Solutions } from './Solutions';
 export { Insights } from './Insights';
 export { Booking } from './Booking';
 export { Footer } from './Footer';
+export { Calculator } from './Calculator';
+export { Services } from './Services';

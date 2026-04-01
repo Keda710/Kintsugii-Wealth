@@ -4,8 +4,14 @@ import { TESTIMONIALS } from '../data/testimonials';
 
 export function Insights() {
   return (
-    <section id="insights" className="section-padding bg-paper border-y border-slate-100">
-      <div className="max-w-7xl mx-auto">
+    <section id="insights" className="section-padding bg-paper border-y border-slate-100 relative overflow-hidden">
+      {/* Decorative Corner Element */}
+      <motion.div 
+        animate={{ x: [0, -20, 0], y: [0, 10, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-[10%] -left-20 w-64 h-64 border-[4px] border-gold/40 rotate-45 pointer-events-none opacity-80" 
+      />
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="heading-md text-navy mb-4">Client Insights</h2>
           <div className="w-12 h-[2px] bg-gold mx-auto" />
@@ -32,9 +38,13 @@ export function Insights() {
                   <div className="text-[10px] text-gold font-semibold uppercase tracking-wider mt-1">{testi.role}</div>
                 </div>
               </div>
-              <div className="absolute top-0 right-0 p-4 opacity-5">
+              <motion.div 
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none"
+              >
                 <TrendingUp className="w-16 h-16" />
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>

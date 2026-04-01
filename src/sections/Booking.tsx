@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { Clock, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Clock, ShieldCheck, ChevronLeft, ChevronRight, Target, Coffee } from 'lucide-react';
 
 const TIMES = ['09:00 AM', '11:00 AM', '01:00 PM', '03:00 PM', '05:00 PM', '06:00 PM'];
 const WEEKDAY_LABELS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
@@ -83,8 +84,14 @@ export function Booking() {
   for (let d = 1; d <= daysInMonth; d++) calendarCells.push(d);
 
   return (
-    <section id="booking" className="section-padding bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section id="booking" className="section-padding bg-white relative overflow-hidden">
+      {/* Decorative Corner Element */}
+      <motion.div 
+        animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+        className="absolute top-[-10%] -left-20 w-80 h-80 border-[8px] border-gold/40 rounded-full pointer-events-none opacity-80" 
+      />
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 items-start">
           <div>
             <h2 className="heading-md text-navy mb-6">Schedule a Discovery Call</h2>
@@ -110,6 +117,46 @@ export function Booking() {
                 <div>
                   <h4 className="font-bold text-navy text-sm uppercase tracking-widest mb-1">Confidentiality</h4>
                   <p className="text-muted text-sm">Strict non-disclosure protocols followed</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-gold/10 text-gold rounded-full">
+                  <Target className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-navy text-sm uppercase tracking-widest mb-1">Agenda</h4>
+                  <p className="text-muted text-sm">Comprehensive portfolio analysis and identifying wealth gaps</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-gold/10 text-gold rounded-full">
+                  <Coffee className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-navy text-sm uppercase tracking-widest mb-1">Preparation</h4>
+                  <p className="text-muted text-sm">No prior documents required. Just bring your financial goals.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-16 bg-slate-50 border border-slate-100 p-8 rounded-2xl relative overflow-hidden">
+              <motion.div 
+                animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-0 right-0 w-32 h-32 bg-gold/20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" 
+              />
+              <p className="font-serif text-lg text-navy leading-relaxed mb-6 relative z-10 italic">
+                “The foundation of lasting wealth lies in timely decisions. Schedule a call with us to start architecting your financial legacy.”
+              </p>
+              <div className="flex items-center gap-4 relative z-10">
+                <div className="w-12 h-12 rounded-full border border-gold/20 p-1">
+                  <div className="w-full h-full bg-navy rounded-full flex items-center justify-center text-gold font-serif text-sm">
+                    PV
+                  </div>
+                </div>
+                <div>
+                  <h5 className="font-bold text-navy text-sm uppercase tracking-widest">Priyank Vora</h5>
+                  <p className="text-[10px] text-muted uppercase tracking-widest mt-1">Founder, Kintsugii Wealth</p>
                 </div>
               </div>
             </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,7 +11,10 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav
+    <motion.nav
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled ? 'glass-nav py-4' : 'bg-transparent py-6'
       }`}
@@ -27,7 +31,7 @@ export function Navbar() {
           </span>
         </a>
         <div className="hidden md:flex items-center gap-8">
-          {['Solutions', 'Founder', 'Insights'].map((item) => (
+          {['Solutions', 'Services', 'Founder', 'Insights', 'Calculator'].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -44,6 +48,6 @@ export function Navbar() {
           </a>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
