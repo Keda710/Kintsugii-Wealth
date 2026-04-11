@@ -28,15 +28,15 @@ export function Insights() {
               key={testi.author}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="bg-white p-12 shadow-sm border border-slate-100 relative"
+              className="bg-white p-12 shadow-sm border border-slate-100 relative flex flex-col h-full"
             >
-              <div className="flex gap-1 mb-6">
+              <div className="flex gap-1 mb-6 shrink-0">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-3 h-3 fill-gold text-gold" />
                 ))}
               </div>
-              <p className="font-serif text-xl italic text-navy/80 mb-8 leading-relaxed">"{testi.quote}"</p>
-              <div className="flex items-center gap-4">
+              <p className="font-serif text-xl italic text-navy/80 mb-8 leading-relaxed grow">"{testi.quote}"</p>
+              <div className="flex items-center gap-4 mt-auto shrink-0">
                 <img src={testi.image} alt={testi.author} className="w-12 h-12 rounded-full grayscale" />
                 <div>
                   <div className="font-bold text-xs uppercase tracking-widest text-navy">{testi.author}</div>
