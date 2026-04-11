@@ -7,6 +7,7 @@ import {
   Services,
   Insights,
   Calculator,
+  RiskAssessment,
   Booking,
   Footer,
 } from './sections';
@@ -22,6 +23,7 @@ export default function App() {
       <Services />
       <Insights />
       <Calculator />
+      <RiskAssessment />
       <Booking />
       <Footer />
     </div>

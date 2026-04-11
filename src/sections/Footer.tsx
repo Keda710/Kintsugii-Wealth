@@ -4,7 +4,7 @@ import { SocialLinks } from '../components/SocialLinks';
 
 export function Footer() {
   return (
-    <motion.footer 
+    <motion.footer
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -21,11 +21,14 @@ export function Footer() {
               Founded by Priyank Vora. Dedicated to mending and strengthening financial legacies through
               institutional-grade advisory and bespoke wealth architecture.
             </p>
-            <div className="mt-8 mb-8">
-              <div className="flex items-center gap-3 text-sm border-l-2 border-gold pl-3 py-1">
+            <div className="mt-10 mb-8">
+              <div className="w-48 mb-6">
+                <img src="/AMFI_vector.svg" alt="AMFI Logo" className="w-full h-auto object-contain object-left" />
+              </div>
+              <div className="flex items-center gap-3 text-sm border-l-2 border-gold pl-3 py-1 whitespace-nowrap">
                 <span className="text-white font-medium">AMFI Registered</span>
                 <span className="text-white/40">|</span>
-                <span className="text-gold tracking-wider font-bold text-xs">ARN: 270042</span>
+                <span className="text-gold tracking-wider font-bold text-xs">ARN: 356544</span>
               </div>
               <p className="text-white/40 text-xs mt-2 pl-3">Mutual Fund Distributor</p>
             </div>
@@ -55,7 +58,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h4 className="text-gold text-[10px] uppercase tracking-[0.3em] font-bold mb-8">Bakrol Office</h4>
+              <h4 className="text-gold text-[10px] uppercase tracking-[0.3em] font-bold mb-8">Anand Office</h4>
               <div className="space-y-4 text-sm text-white/60">
                 <div className="flex gap-3">
                   <MapPin className="w-4 h-4 shrink-0 text-gold" />

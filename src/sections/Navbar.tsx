@@ -16,10 +16,10 @@ export function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? 'glass-nav py-4' : 'bg-transparent py-6'
+        isScrolled ? 'glass-nav py-4 shadow-lg bg-white/95 backdrop-blur-md border-b border-slate-200/50' : 'bg-transparent py-6'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+      <div className="w-full max-w-[1600px] mx-auto px-6 md:px-16 flex justify-between items-center">
         <a href="#" className="flex items-center gap-3 group">
           <img
             src="/logo.png"
@@ -31,13 +31,20 @@ export function Navbar() {
           </span>
         </a>
         <div className="hidden md:flex items-center gap-8">
-          {['Solutions', 'Services', 'Founder', 'Insights', 'Calculator'].map((item) => (
+          {[
+            { name: 'Solutions', id: 'solutions' },
+            { name: 'Services', id: 'services' },
+            { name: 'Founder', id: 'founder' },
+            { name: 'Insights', id: 'insights' },
+            { name: 'Calculator', id: 'calculator' },
+            { name: 'Risk Profile', id: 'risk-assessment' },
+          ].map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-[10px] uppercase tracking-[0.2em] font-semibold text-navy/70 hover:text-gold transition-colors"
+              key={item.id}
+              href={`#${item.id}`}
+              className="text-[10px] uppercase tracking-[0.2em] font-semibold text-navy/70 hover:text-gold transition-colors whitespace-nowrap"
             >
-              {item}
+              {item.name}
             </a>
           ))}
           <a

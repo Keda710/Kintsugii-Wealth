@@ -14,7 +14,7 @@ export const SERVICES: Service[] = [
     icon: 'Briefcase',
   },
   {
-    title: 'Alternative Investment (AIF)',
+    title: 'Alternative Investment Funds (AIF)',
     description:
       'Exclusive access to private equity, hedge funds, and real estate for sophisticated diversification.',
     icon: 'ArrowRight',

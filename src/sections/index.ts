@@ -8,3 +8,4 @@ export { Booking } from './Booking';
 export { Footer } from './Footer';
 export { Calculator } from './Calculator';
 export { Services } from './Services';
+export { RiskAssessment } from './RiskAssessment';

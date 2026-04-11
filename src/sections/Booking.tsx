@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { motion } from 'motion/react';
-import { Clock, ShieldCheck, ChevronLeft, ChevronRight, Target, Coffee } from 'lucide-react';
+import { Clock, ShieldCheck, ChevronLeft, ChevronRight, Target, Coffee, ChevronDown } from 'lucide-react';
 
 const TIMES = ['09:00 AM', '11:00 AM', '01:00 PM', '03:00 PM', '05:00 PM', '06:00 PM'];
 const WEEKDAY_LABELS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
@@ -32,6 +32,8 @@ export function Booking() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [name, setName] = useState('');
+  const [countryCode, setCountryCode] = useState('+91');
+  const [contactNo, setContactNo] = useState('');
 
   const startOfTomorrow = useMemo(() => {
     const t = new Date();
@@ -70,12 +72,16 @@ export function Booking() {
   };
 
   const handleBooking = () => {
-    if (!selectedDate || !selectedTime || !name) {
+    if (!selectedDate || !selectedTime || !name || !contactNo) {
       alert('Please complete all fields to proceed.');
       return;
     }
+    if (!/^\d{10}$/.test(contactNo)) {
+      alert('Please enter a valid 10-digit contact number.');
+      return;
+    }
     const dateStr = formatDateForEmail(selectedDate);
-    const mailto = `mailto:Kintsugiiwealth@gmail.com?subject=Meeting Request: ${name}&body=I would like to schedule a discovery call on ${dateStr} at ${selectedTime}.`;
+    const mailto = `mailto:Kintsugiiwealth@gmail.com?subject=Meeting Request: ${name}&body=I would like to schedule a discovery call on ${dateStr} at ${selectedTime}.%0A%0AContact Number: ${countryCode} ${contactNo}`;
     window.location.href = mailto;
   };
 
@@ -204,7 +210,7 @@ export function Booking() {
                     return <div key={`empty-${i}`} className="aspect-square" />;
                   }
                   const date = new Date(viewedYear, viewedMonth, day);
-                  const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+                  const isWeekend = date.getDay() === 0;
                   const isDisabled = date < startOfTomorrow || isWeekend;
                   const isSelected = selectedDate !== null && isSameDay(date, selectedDate);
                   return (
@@ -245,7 +251,7 @@ export function Booking() {
               </div>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               <input
                 type="text"
                 placeholder="YOUR FULL NAME"
@@ -253,10 +259,39 @@ export function Booking() {
                 onChange={(e) => setName(e.target.value)}
                 className="w-full px-6 py-4 bg-slate-50 border-none text-[10px] font-bold tracking-widest uppercase focus:ring-1 focus:ring-gold outline-none"
               />
+              <div className="flex gap-2">
+                <div className="relative w-32 shrink-0">
+                  <select
+                    value={countryCode}
+                    onChange={(e) => setCountryCode(e.target.value)}
+                    className="w-full pl-5 pr-8 py-4 bg-slate-50 border-none text-[10px] font-bold tracking-widest uppercase focus:ring-1 focus:ring-gold outline-none cursor-pointer appearance-none"
+                  >
+                    <option value="+91">IN (+91)</option>
+                    <option value="+1">US (+1)</option>
+                    <option value="+44">UK (+44)</option>
+                    <option value="+61">AU (+61)</option>
+                    <option value="+971">AE (+971)</option>
+                    <option value="+65">SG (+65)</option>
+                  </select>
+                  <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-navy">
+                    <ChevronDown className="w-3 h-3 opacity-50" />
+                  </div>
+                </div>
+                <input
+                  type="tel"
+                  placeholder="YOUR CONTACT NUMBER"
+                  value={contactNo}
+                  onChange={(e) => {
+                    const val = e.target.value.replace(/\D/g, '');
+                    setContactNo(val.slice(0, 10));
+                  }}
+                  className="flex-1 px-6 py-4 bg-slate-50 border-none text-[10px] font-bold tracking-widest uppercase focus:ring-1 focus:ring-gold outline-none"
+                />
+              </div>
               <button
                 type="button"
                 onClick={handleBooking}
-                className="w-full py-5 bg-navy text-white text-xs font-bold uppercase tracking-[0.3em] hover:bg-gold transition-all duration-500 shadow-lg shadow-navy/10"
+                className="w-full py-5 !mt-8 bg-navy text-white text-xs font-bold uppercase tracking-[0.3em] hover:bg-gold transition-all duration-500 shadow-lg shadow-navy/10"
               >
                 Confirm Invitation Request
               </button>

@@ -8,17 +8,17 @@ export function Hero() {
       {/* Soft overlay lines & floating blobs echoing Sahjik's airy design */}
       <div className="absolute top-0 right-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMCA1MCBDIDIwMCAyMDAgODAwIDEwMCAxMDAwIDI1MCIgc3Ryb2tlPSJyZ2JhKDE5NywgMTYwLCA4OSwgMC4wNSkiIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMiIvPjwvc3ZnPg==')] opacity-50 bg-no-repeat bg-cover pointer-events-none" />
       <div className="absolute top-0 right-0 w-1/3 h-full bg-navy/5 -skew-x-12 transform translate-x-20 pointer-events-none" />
-      
+
       {/* Extra Floating Particles */}
-      <motion.div 
+      <motion.div
         animate={{ y: [0, -40, 0], x: [0, 20, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-[30%] left-[10%] w-4 h-4 bg-gold rounded-full opacity-40 blur-[2px] pointer-events-none" 
+        className="absolute top-[30%] left-[10%] w-4 h-4 bg-gold rounded-full opacity-40 blur-[2px] pointer-events-none"
       />
-      <motion.div 
+      <motion.div
         animate={{ y: [0, 30, 0], x: [0, -30, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-[20%] right-[45%] w-8 h-8 border-[2px] border-gold rounded-full opacity-30 pointer-events-none" 
+        className="absolute bottom-[20%] right-[45%] w-8 h-8 border-[2px] border-gold rounded-full opacity-30 pointer-events-none"
       />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-16 items-center relative z-10">
@@ -40,7 +40,7 @@ export function Hero() {
           </motion.div>
 
           <h1 className="heading-lg text-navy mb-8">
-            Preserving Private Wealth Through <span className="italic text-gold">Institutional</span> Precision.
+            Preserving Wealth Through <span className="italic text-gold">Institutional</span> Precision.
           </h1>
 
           <p className="text-muted text-lg mb-10 max-w-lg">
@@ -73,31 +73,31 @@ export function Hero() {
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
           </div>
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               y: [0, -20, 0],
               rotate: [0, 15, 0]
             }}
-            transition={{ 
-              duration: 6, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
             }}
-            className="absolute -bottom-8 -left-8 w-40 h-40 bg-gold opacity-20 -z-10 rounded-full blur-xl" 
+            className="absolute -bottom-8 -left-8 w-40 h-40 bg-gold opacity-20 -z-10 rounded-full blur-xl"
           />
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               y: [0, 20, 0],
               x: [0, -10, 0],
               rotate: [0, -10, 0]
             }}
-            transition={{ 
-              duration: 8, 
-              repeat: Infinity, 
+            transition={{
+              duration: 8,
+              repeat: Infinity,
               ease: "easeInOut",
-              delay: 1 
+              delay: 1
             }}
-            className="absolute -top-6 -right-6 w-32 h-32 border-[3px] border-gold/40 -z-10" 
+            className="absolute -top-6 -right-6 w-32 h-32 border-[3px] border-gold/40 -z-10"
           />
         </motion.div>
       </div>

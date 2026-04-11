@@ -4,7 +4,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
       'Investing with Kintsugii Wealth have been the best decision I have made in recent years. Your guidance during bull and bear market have been invaluable for me. Also you have adopted to my conservative investment style and have still managed to design the portfolio which is giving me excellent returns and at the same time preparing well for my future.',
-    author: 'Vipin Menon',
+    author: 'Jaldhi Mehata',
     role: 'Associate Director in Accenture India',
     image: 'public/C1.jpeg',
   },
