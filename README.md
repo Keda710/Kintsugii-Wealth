@@ -19,3 +19,4 @@ View your app in AI Studio: https://ai.studio/apps/64f322a7-7b38-4226-b627-40dbb
 3. Run the app:
    `npm run dev`
 # Kintsugii-Wealth
+# Kintsugii-Wealth
