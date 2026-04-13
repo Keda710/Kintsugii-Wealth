@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,7 +21,7 @@ export function Navbar() {
       }`}
     >
       <div className="w-full max-w-[1600px] mx-auto px-6 md:px-16 flex justify-between items-center">
-        <a href="#" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group">
           <img
             src="/logo.png"
             alt="Kintsugii Wealth"
@@ -29,30 +30,29 @@ export function Navbar() {
           <span className="font-serif text-xl font-bold tracking-widest text-navy hidden sm:block">
             KINTSUGII <span className="text-gold group-hover:text-gold-light transition-colors">WEALTH</span>
           </span>
-        </a>
+        </Link>
         <div className="hidden md:flex items-center gap-8">
           {[
-            { name: 'Solutions', id: 'solutions' },
-            { name: 'Services', id: 'services' },
-            { name: 'Founder', id: 'founder' },
-            { name: 'Insights', id: 'insights' },
-            { name: 'Calculator', id: 'calculator' },
-            { name: 'Risk Profile', id: 'risk-assessment' },
+            { name: 'Home', path: '/' },
+            { name: 'Our Firm', path: '/about' },
+            { name: 'Services', path: '/services' },
+            { name: 'Insights', path: '/insights' },
+            { name: 'Tools', path: '/tools' },
           ].map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
+            <Link
+              key={item.name}
+              to={item.path}
               className="text-[10px] uppercase tracking-[0.2em] font-semibold text-navy/70 hover:text-gold transition-colors whitespace-nowrap"
             >
               {item.name}
-            </a>
+            </Link>
           ))}
-          <a
-            href="#booking"
+          <Link
+            to="/contact"
             className="px-6 py-2.5 bg-navy text-white text-[10px] uppercase tracking-widest font-bold hover:bg-gold transition-all duration-300"
           >
             Book Meeting
-          </a>
+          </Link>
         </div>
       </div>
     </motion.nav>

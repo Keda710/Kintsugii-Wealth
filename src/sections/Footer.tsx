@@ -1,5 +1,6 @@
 import { MapPin, Mail, Phone } from 'lucide-react';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 import { SocialLinks } from '../components/SocialLinks';
 
 export function Footer() {
@@ -81,12 +82,12 @@ export function Footer() {
             &copy; 2025 Kintsugii Wealth. Private & Confidential.
           </p>
           <div className="flex gap-8">
-            <a href="#" className="text-[10px] uppercase tracking-widest text-white/30 hover:text-gold transition-colors">
+            <Link to="#" className="text-[10px] uppercase tracking-widest text-white/30 hover:text-gold transition-colors">
               Privacy Policy
-            </a>
-            <a href="#" className="text-[10px] uppercase tracking-widest text-white/30 hover:text-gold transition-colors">
+            </Link>
+            <Link to="#" className="text-[10px] uppercase tracking-widest text-white/30 hover:text-gold transition-colors">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>
