@@ -6,8 +6,8 @@ import {defineConfig, loadEnv} from 'vite';
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
-    // Required for GitHub Pages project sites: /<repo-name>/
-    base: '/Kintsugii-Wealth/',
+    // Use relative asset paths so GitHub Pages always resolves files correctly.
+    base: './',
     plugins: [react(), tailwindcss()],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
