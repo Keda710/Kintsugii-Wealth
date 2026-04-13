@@ -4,15 +4,15 @@ export function FounderSection() {
   return (
     <section id="founder" className="section-padding bg-paper relative overflow-hidden">
       {/* Decorative Corner Element */}
-      <motion.div 
+      <motion.div
         animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-10 -right-20 w-80 h-80 bg-gold/30 rounded-full blur-3xl pointer-events-none" 
+        className="absolute top-10 -right-20 w-80 h-80 bg-gold/30 rounded-full blur-3xl pointer-events-none"
       />
-      <motion.div 
+      <motion.div
         animate={{ rotate: [0, -90, 0] }}
         transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-        className="absolute bottom-[-10%] -left-20 w-96 h-96 border-[1px] border-gold/20 pointer-events-none" 
+        className="absolute bottom-[-10%] -left-20 w-96 h-96 border-[1px] border-gold/20 pointer-events-none"
       />
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center relative z-10">
         <motion.div
@@ -33,13 +33,13 @@ export function FounderSection() {
               <li className="flex items-center gap-4">
                 <div className="w-1.5 h-1.5 bg-gold rounded-full" />
                 <span>
-                  <strong>HDFC Bank:</strong> Served as Manager, overseeing complex portfolio strategies.
+                  <strong>HDFC Bank:</strong> Served as Associate Director, overseeing complex portfolio strategies.
                 </span>
               </li>
               <li className="flex items-center gap-4">
                 <div className="w-1.5 h-1.5 bg-gold rounded-full" />
                 <span>
-                  <strong>ANZ Bank:</strong> Served as Associate Director, managing high-value private wealth accounts.
+                  <strong>ANZ Bank:</strong> Served as Manager, managing high-value private wealth accounts.
                 </span>
               </li>
             </ul>
